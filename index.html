@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Login page</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div id="square">
+                <div class="front"> 
+                    <h1>Login</h1>
+                    <form action="#" method="post">
+                        <input required type="email" name="email" id="email" placeholder="Email" />
+                        <input required type="password" name="password" id="password" placeholder="Password" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="right">
+                    <h1>Create a new account</h1>
+                    <form action="#" method="post">
+                        <input required type="email" name="email" id="email" placeholder="Email" />
+                        <input required type="text" name="fullName" id="fullName" placeholder="Full name" />
+                        <input required type="password" name="password" id="password" placeholder="Password" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="left">
+                    <h1>Add your email to reset password</h1>
+                    <form action="#" method="post">
+                        <input required type="email" name="email" id="email" placeholder="Email" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="contact">
+                    <h1>Contact Us</h1>
+                    <form action="#" method="post">
+                        <input required type="text" name="name" id="contactName" placeholder="Your Name"/>
+                        <input required type="email" name="contactEmail" id="contactEmail" placeholder="Your Email" />
+                        <textarea required name="message" id="message" placeholder="Your Message"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>                  
+                </div>
+            </div>
+            <div class="actions">
+                <button id="leftSide" type="button">Forgot Password</button>
+                <button id="frontSide" type="button">Login</button>
+                <button id="rightSide" type="button">Sign up</button>
+                <button id="contactSide" type="button">Contact Us</button>
+            </div>
+        </div>
+    </div> 
+    <script>
+        const square = document.getElementById("square");
+        const frontSide = document.getElementById("frontSide");
+        const leftSide = document.getElementById("leftSide");
+        const rightSide = document.getElementById("rightSide");
+        const contactSide = document.getElementById("contactSide");
+        
+        function resetAllForms() {
+        
+            const forms = document.querySelectorAll("#square > div");
+            forms.forEach(form => {
+                form.style.display = "none";
+            });
+            
+            document.querySelector(".front").style.display = "block"; 
+        }
+
+        frontSide.addEventListener("click", () => {
+            resetAllForms();
+            square.style.transform = "rotate3d(0, 0, 0, 0deg)";
+            document.title = "Login page";    
+            document.querySelector(".front").style.display = "block"; 
+        });
+
+        rightSide.addEventListener("click", () => {
+            resetAllForms();
+            square.style.transform = "rotate3d(0, -1, 0, 90deg)";
+            document.title = "Sign up page";
+            document.querySelector(".right").style.display = "block"; 
+        });
+
+        leftSide.addEventListener("click", () => {
+            resetAllForms();
+            square.style.transform = "rotate3d(0, 1, 0, 90deg)";
+            document.title = "Forgot password page"; 
+            document.querySelector(".left").style.display = "block"; 
+        });
+
+        contactSide.addEventListener("click", () => {
+            frontSide.style.display = "none";
+            rightSide.style.display = "none";
+            leftSide.style.display = "none";
+            contactSide.style.display = "block";
+            document.querySelector(".contact").style.display = "block";
+            square.style.transform = "rotate3d(0, -1, 0, 180deg)";
+            document.title = "Contact us";  
+            frontSide.style.display = "block";
+            rightSide.style.display = "block";
+            leftSide.style.display = "block";
+            const contactForm = document.querySelector(".contact");
+            contactForm.querySelector('h1').style.display = "block";
+            contactForm.querySelector('form').style.display = "block";
+            contactForm.querySelector('input[name="name"]').style.display = "block";
+            contactForm.querySelector('input[name="email"]').style.display = "block";
+            contactForm.querySelector('textarea').style.display = "block";
+            contactForm.querySelector('button').style.display = "block";
+        });
+    </script> 
+</body>
+</html>
+<script src="/script.js"></script>
